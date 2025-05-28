@@ -16,6 +16,7 @@ public class CountryController {
     @FXML
     private ComboBox<Country> comboBoxCountries;
 
+    // TODO ajouter le type "Country" entre les chevrons de la classe "ListView" de façon à ne plus avoir le warning
     @FXML
     private ListView listViewCountries;
 
@@ -39,6 +40,7 @@ public class CountryController {
 
     @FXML
     public void initialize() {
+        // TODO serait-il possible d'ajouter la méthode "getCountriesList" de façon à pouvoir charger les pays en utilisant "Locale.getISOCountries()" ?
         countries.add(new Country("Belgique", "BEL"));
         countries.add(new Country("France", "FRA"));
         countries.add(new Country("Pérou", "PER"));
