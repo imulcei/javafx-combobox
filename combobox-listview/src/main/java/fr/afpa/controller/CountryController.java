@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.List;
+import java.util.Locale;
 
 import fr.afpa.model.Country;
 import javafx.fxml.FXML;
@@ -16,9 +17,8 @@ public class CountryController {
     @FXML
     private ComboBox<Country> comboBoxCountries;
 
-    // TODO ajouter le type "Country" entre les chevrons de la classe "ListView" de façon à ne plus avoir le warning
     @FXML
-    private ListView listViewCountries;
+    private ListView<Country> listViewCountries;
 
     @FXML
     private ObservableList<Country> countries = FXCollections.observableArrayList();
@@ -40,14 +40,11 @@ public class CountryController {
 
     @FXML
     public void initialize() {
-        // TODO serait-il possible d'ajouter la méthode "getCountriesList" de façon à pouvoir charger les pays en utilisant "Locale.getISOCountries()" ?
-        countries.add(new Country("Belgique", "BEL"));
-        countries.add(new Country("France", "FRA"));
-        countries.add(new Country("Pérou", "PER"));
-        countries.add(new Country("Canada", "CAN"));
-        countries.add(new Country("Laos", "LAO"));
-        countries.add(new Country("Japon", "JPN"));
-        countries.add(new Country("Moldavie", "MDA"));
+        String[] countryCodes = Locale.getISOCountries();
+        for (String countryCode : countryCodes) {
+            Locale obj = new Locale("", countryCode);
+            countries.add(new Country(obj.getDisplayCountry(), obj.getISO3Country()));
+        }
         comboBoxCountries.setItems(countries);
         buttonController = new ButtonController(this);
     }
