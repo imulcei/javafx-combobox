@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:controller="fr.afpa.controller.CountryController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.9999593098958" minWidth="10.0" prefWidth="256.33331298828125" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.33331298828128" minWidth="10.0" prefWidth="83.33335367838544" />
@@ -34,21 +34,21 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
-            <ComboBox prefWidth="280.0" />
+            <ComboBox fx:id="comboBoxCountries" prefWidth="280.0" />
          </children>
       </VBox>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="80.0" spacing="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <children>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="40.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefWidth="40.0" text="&gt;" />
-                  <Button alignment="CENTER" layoutY="40.0" mnemonicParsing="false" prefWidth="40.0" text="&gt;&gt;" />
+                  <Button fx:id="buttonAddOne" onAction="#handleAddOne" alignment="CENTER" mnemonicParsing="false" prefWidth="40.0" text="&gt;" />
+                  <Button fx:id="buttonAddAll" onAction="#handleAddAll" alignment="CENTER" layoutY="40.0" mnemonicParsing="false" prefWidth="40.0" text="&gt;&gt;" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="40.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefWidth="40.0" text="&lt;" />
-                  <Button alignment="CENTER" layoutY="40.0" mnemonicParsing="false" prefWidth="40.0" text="&lt;&lt;" />
+                  <Button fx:id="buttonDeleteOne" onAction="#handleDeleteOne" alignment="CENTER" mnemonicParsing="false" prefWidth="40.0" text="&lt;" />
+                  <Button fx:id="buttonDeleteAll" onAction="#handleDeleteAll" alignment="CENTER" layoutY="40.0" mnemonicParsing="false" prefWidth="40.0" text="&lt;&lt;" />
                </children>
             </Pane>
          </children>
@@ -57,16 +57,16 @@
          <children>
             <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="50.0" text="Haut" />
-                  <Button mnemonicParsing="false" prefWidth="50.0" text="Bas" />
+                  <Button fx:id="upButton" onAction="#handleMoveUp" mnemonicParsing="false" prefWidth="50.0" text="Haut" />
+                  <Button fx:id="downButton" onAction="#handleMoveDown" mnemonicParsing="false" prefWidth="50.0" text="Bas" />
                </children>
             </HBox>
             <ScrollPane fitToWidth="true">
                <content>
-                  <ListView prefHeight="240.0" prefWidth="241.0" />
+                  <ListView fx:id="listViewCountries" prefHeight="240.0" prefWidth="241.0" />
                </content>
             </ScrollPane>
-            <Button alignment="CENTER" mnemonicParsing="false" text="Quitter">
+            <Button fx:id="quitButton" onAction="#handleQuitApp" alignment="CENTER" mnemonicParsing="false" text="Quitter">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

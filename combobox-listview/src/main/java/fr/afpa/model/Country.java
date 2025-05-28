@@ -25,4 +25,9 @@ public class Country {
         this.codeIso = codeIso;
     }
 
+    @Override
+    public String toString() {
+        return name + ", " + codeIso;
+    }
+
 }
