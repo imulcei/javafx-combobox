@@ -22,6 +22,7 @@ public class ButtonController {
         Country selectedCountry = comboBox.getSelectionModel().getSelectedItem();
         if (selectedCountry != null && !listView.getItems().contains(selectedCountry)) {
             listView.getItems().add(selectedCountry);
+            countryController.updateButtonState();
         }
     }
 
