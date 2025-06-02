@@ -42,6 +42,15 @@ public class CountryController {
     public void initialize() {
         String[] countryCodes = Locale.getISOCountries();
         for (String countryCode : countryCodes) {
+            // TODO le constructeur de "Locale" est déprécié
+            // La documentation suivante préconise d'utiliser l'approche en passant par le "Builder" (méthode static de la classe "Locale")
+            // Plus d'information ici : https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Locale.Builder.html
+            //
+            // Code à tester pour instancier  :
+            // Locale obj = new Locale.Builder().setRegion(countryCode).build();
+            // 
+            // Cet exemple nous donne l'intérêt du design pattern "builder" VS une approche avec appel de constructeur.
+            // -> permet notamment de ne pas s'embarasser avec des paramètres de constructeurs pouvant être, dans certains cas, superflus.
             Locale obj = new Locale("", countryCode);
             countries.add(new Country(obj.getDisplayCountry(), obj.getISO3Country()));
         }
@@ -73,11 +82,13 @@ public class CountryController {
 
     @FXML
     private void handleDeleteOne() {
+        // TODO griser les boutons si jamais la liste de droite est vide
         buttonController.deleteSelectedCountry();
     }
 
     @FXML
     private void handleDeleteAll() {
+        // TODO griser les boutons si jamais la liste de droite est vide
         buttonController.deleteAllCountries();
     }
 
